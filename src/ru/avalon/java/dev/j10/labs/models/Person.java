@@ -1,5 +1,7 @@
 package ru.avalon.java.dev.j10.labs.models;
 
+import ru.avalon.java.dev.j10.labs.commons.Address;
+
 /**
  * Представление о человеке.
  * <p>
@@ -11,6 +13,34 @@ package ru.avalon.java.dev.j10.labs.models;
  * </ol>
  */
 public class Person {
+    private Passport passport;
+    private Address address;
+
+    public Person(Passport passport, Address address) {
+        this.passport = passport;
+        this.address = address;
+    }
+
+
+    public String getFullName() {
+        System.out.println(getFullName());
+
+        if (passport.getPatronimic() == null && passport.getMiddlename() == null) {
+            return passport.getName() + " " + passport.getLastname();
+        } else if (passport.getPatronimic() == null) {
+            return passport.getName() + " " + passport.getMiddlename().substring(0) + ". " + passport.getLastname();
+        } else if (passport.getMiddlename() == null) {
+            return passport.getName() + " " + passport.getPatronimic() + " " + passport.getLastname();
+        }
+    }
+
+    public String getAddress() {
+        System.out.println(getAddress());
+        return address.getCountry() + address.getCity() + address.getStreet() + address.getBuildNumber() + address.getFlatNumber();
+
+
+    }
+}
 
     /**
      * Возврвщает полное имя человека.
@@ -29,12 +59,6 @@ public class Person {
      *
      * @return имя человека в виде строки.
      */
-    public String getFullName() {
-        /*
-         * TODO(Студент): Закончить определение метода 'getFullName()' класса 'Person'
-         */
-        return null;
-    }
 
     /**
      * Возвращает адрес, по которому проживает человек.
@@ -44,10 +68,9 @@ public class Person {
      *
      * @return адрес регистрации в виде строки.
      */
-    public String getAddress() {
-        /*
-         * TODO(Студент): Закончить определение метода 'getAddress()' класса 'Person'
-         */
-        return null;
-    }
-}
+
+    /*
+     * TODO(Студент): Закончить определение метода 'getAddress()' класса 'Person'
+     */
+
+
